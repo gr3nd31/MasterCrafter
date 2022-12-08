@@ -591,19 +591,20 @@ for i in type_list:
     bitty.append(i)
 
 material_entry_column = [
-    sg.Combo(bitty, default_value="All", key="-search_type-"),
     [sg.Button("Search"),
-    sg.In(size=(10, 2), key="-search_key-")],
+    sg.In(size=(15, 2), key="-search_key-"),
+    sg.Combo(bitty, default_value="All", key="-search_type-")],
     sg.Push(),
     sg.Button("Components"),
     sg.Button("Types"),
     sg.Button("Known recipes"),
-    sg.Button("Subclasses")
+    sg.Button("Subclasses"),
+    sg.Push()
 ]
 # Second column has the first listbox, which you can select items to check characteristics,
 # and the second listbox, which shows you list items you've selected, as well as the artifice button
 all_submitted_column = [
-    sg.Listbox(values=component_list, enable_events=True, size = (43,15), key="-lb_1-"),
+    sg.Listbox(values=component_list, enable_events=True, size = (43,12), key="-lb_1-"),
     [sg.Button("Add component"),
     sg.Push(),
     sg.Push(),
@@ -611,13 +612,13 @@ all_submitted_column = [
     sg.Push(),
     sg.Button("Clear list"),],
     sg.Push(),
-    sg.Listbox(values=materials, size = (43,15), key="-lb_2-"),
+    sg.Listbox(values=materials, size = (43,12), key="-lb_2-"),
 ]
 # Third column shows the item image and the procedurally generated description
 main_font=("Arial bold", 11)
 item_description = [
     sg.Image("resources/images/mastercrafter_logo.png", key = "-item_image-"),
-    sg.Multiline(description, size=(55,15),key = "-item_description_2-", font=main_font),
+    sg.Multiline(description, size=(59,12),key = "-item_description_2-", font=main_font),
 ]
 
 # This new column lets you select a artificing subtype. It may get switched to a checkbox system
@@ -641,7 +642,7 @@ pockets_column=[
     sg.In(pocket_name, size=(10, 2),key="-pocket-"),
     sg.Button("View pocket"),
     sg.Button("Switch pocket"),
-    sg.Button("Give item"),
+
     sg.Push(),
     sg.Button("Add new"),
     sg.Button("Delete pocket")
@@ -653,6 +654,7 @@ layout=[
     subclass_buttons,
     all_submitted_column,
     [sg.Button("Add to pocket"),
+    sg.Button("Give item"),
     sg.Push(),
     sg.Push(),
     sg.Button("Shop"),
